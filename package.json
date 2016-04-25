@@ -1,0 +1,13 @@
+{
+  "bin": "index.js",
+  "name": "webpack-dev-node",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "Alexander Christiansson",
+  "license": "MIT",
+  "dependencies": {
+    "webpack": "2.1.0-beta.5",
+    "yargs": "^4.6.0"
+  }
+}
