@@ -1,7 +1,7 @@
 {
   "bin": "index.js",
   "name": "webpack-dev-node",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "index.js",
   "author": "Alexander Christiansson",
