@@ -1,6 +1,6 @@
 # webpack-dev-node
 
-Node's response to `webpack-dev-middleware`. It starts a webpack watcher, runs the main entry, and sends signals for it to refresh whenever new code is generated.
+`webpack-dev-middleware` but for node targets. It starts a webpack watcher, runs an output file, and sends signals for it to refresh whenever new code is generated.
 
 ## Usage
 
@@ -23,8 +23,8 @@ Node's response to `webpack-dev-middleware`. It starts a webpack watcher, runs t
 
 * Finally, run
 
-`webpack-dev-node --config webpack.config.js`
-
-or simply
-
 `webpack-dev-node`
+
+or
+
+`webpack-dev-node --config webpack.config.js --chunk main`
