@@ -6,6 +6,10 @@
   "main": "index.js",
   "author": "Alexander Christiansson",
   "license": "MIT",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/alexanderchr/webpack-dev-node"
+  },
   "dependencies": {
     "yargs": "^4.6.0"
   },
