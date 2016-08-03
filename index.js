@@ -1,37 +1,37 @@
 #!/usr/bin/env node
 
-var path = require('path');
-var fork = require('child_process').fork;
-var webpack = require('webpack');
-var argv = require('yargs').argv;
+const path = require('path');
+const fork = require('child_process').fork;
+const webpack = require('webpack');
+const argv = require('yargs').argv;
 
-var options = {
+const options = {
   config: argv.config || 'webpack.config',
   chunk: argv.chunk || 'main'
 };
 
-var webpackConfiguration = require(path.join(process.cwd(), options.config));
-var compiler = webpack(webpackConfiguration);
+const webpackConfiguration = require(path.join(process.cwd(), options.config));
+const compiler = webpack(webpackConfiguration);
 
-var outputProcess;
+let outputProcess;
 compiler.plugin('done', function(stats) {
   if (stats.hasErrors()) {
     return;
   }
 
   if (!outputProcess) {
-    var outputDirectory = stats.compilation.compiler.outputPath;
-    var outputFile = stats.toJson().assetsByChunkName[options.chunk];
+    const outputDirectory = stats.compilation.compiler.outputPath;
+    const outputFile = stats.toJson().assetsByChunkName[options.chunk];
 
     if (!outputFile) {
       throw `Chunk '${options.chunk}' has no assets`;
     }
 
-    var outputPath = path.join(outputDirectory, outputFile);
+    const outputPath = path.join(outputDirectory, outputFile);
     outputProcess = fork(outputPath);
   } else {
     // TODO: Validate that webpack is in idle mode before sending signal
-    // `hot/signal` listens to SIGUSR2 signals to know when to reload
+    // does not actually kill the process - `hot/signal` reloads on receiving SIGUSR2 signals
     outputProcess.kill('SIGUSR2');
   }
 });
