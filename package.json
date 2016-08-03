@@ -1,14 +1,14 @@
 {
   "bin": "index.js",
   "name": "webpack-dev-node",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "main": "index.js",
   "author": "Alexander Christiansson",
   "license": "MIT",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/alexanderchr/webpack-dev-node"
+    "type": "git",
+    "url": "https://github.com/alexanderchr/webpack-dev-node"
   },
   "dependencies": {
     "yargs": "^4.6.0"
