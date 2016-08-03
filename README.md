@@ -1,21 +1,29 @@
 # webpack-dev-node
 
-`webpack-dev-middleware` but for node targets. It starts a webpack watcher, runs an output file, and sends signals for it to refresh whenever new code is generated.
+`webpack-dev-middleware` for node targets. It starts a webpack watcher, runs an output file, and sends signals for it to refresh whenever new code is generated.
+
+## Why
+
+To hot-reload both the server and the client during development of universal applications.
 
 ## Usage
 
 * `npm install --save-dev webpack-dev-node`
 
-* Add `webpack/hot/signal` as an entry and  `HotModuleReplacementPlugin` as a plugin.
+* Add `webpack/hot/signal` as an entry  
+
+* Add `HotModuleReplacementPlugin` and `NoErrorsPlugin` as plugins
 
 ```
 {
+  target: 'node',
   entry: [
-    'webpack/hot/signal'
+    'webpack/hot/signal',
   ],
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
-  ]
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
+  ],
 }
 ```
 
