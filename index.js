@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const path = require('path');
-const fork = require('child_process').fork;
+const childProcess = require('child_process');
 const webpack = require('webpack');
 const argv = require('yargs').argv;
 
@@ -16,6 +16,7 @@ const compiler = webpack(webpackConfiguration);
 let outputProcess;
 compiler.plugin('done', function(stats) {
   if (stats.hasErrors()) {
+    console.log(stats.compilation.errors.join('\n'));
     return;
   }
 
@@ -28,7 +29,7 @@ compiler.plugin('done', function(stats) {
     }
 
     const outputPath = path.join(outputDirectory, outputFile);
-    outputProcess = fork(outputPath);
+    outputProcess = childProcess.fork(outputPath);
   } else {
     // TODO: Validate that webpack is in idle mode before sending signal
     // does not actually kill the process - `hot/signal` reloads on receiving SIGUSR2 signals
