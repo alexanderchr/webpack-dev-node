@@ -27,7 +27,7 @@ To hot-reload both the server and the client during development of universal app
 }
 ```
 
-* Add `module.hot.accept` hooks as you see fit. Refer to [webpack HMR documentation](https://webpack.github.io/docs/hot-module-replacement.html) for instructions. Use `node-dynamic-middleware` to easily replace connect middleware.
+* Add `module.hot.accept` hooks as you see fit. Refer to [webpack HMR documentation](https://webpack.github.io/docs/hot-module-replacement.html) for instructions. Use `dynamic-middleware` to easily replace connect middleware.
 
 * Finally, run
 
